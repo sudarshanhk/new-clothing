@@ -1,38 +1,34 @@
 
-import { useState } from "react";
-import { createAuthUserWitEmailAndPassword, createUserDocumentFromAuth, signInWithGooglePopup, signIneAuthUserWitEmailAndPassword } from "../../utils/firebase/utilities.firebase";
+import { useState  } from "react";
+import {  createUserDocumentFromAuth, signInWithGooglePopup, signIneAuthUserWitEmailAndPassword } from "../../utils/firebase/utilities.firebase";
 import FormInput from "../form-input/form-input.component";
 import "../sign-in-form/sign-in-form.style.scss";
 import Button from "../button/button.component";
-const defaultFormField = {
 
+const defaultFormField = {
     email: "",
     password: "",
    
 }
 
-
-
 const SignIn = () => {
     const [formField, setFormFields] = useState(defaultFormField);
     const {  email, password } = formField;
-    
     const emptyFormField = () => {
         setFormFields(defaultFormField);
     };
 
     const signInWithGoogle = async () => {
         const { user } = await signInWithGooglePopup();
-       const userDocRef =  createUserDocumentFromAuth (user)
-      
+        // const userDocRef = createUserDocumentFromAuth(user)
+  
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
      
         try {
-            const response = await signIneAuthUserWitEmailAndPassword(email, password);
-            console.log (response)
+            const {user} = await signIneAuthUserWitEmailAndPassword(email, password);
             emptyFormField()
         } catch (error) {
             console.log(error);
