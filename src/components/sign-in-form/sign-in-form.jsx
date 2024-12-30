@@ -3,7 +3,7 @@ import { useState  } from "react";
 import {  createUserDocumentFromAuth, signInWithGooglePopup, signIneAuthUserWitEmailAndPassword } from "../../utils/firebase/utilities.firebase";
 import FormInput from "../form-input/form-input.component";
 import "../sign-in-form/sign-in-form.style.scss";
-import Button from "../button/button.component";
+import Button  , { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 const defaultFormField = {
     email: "",
@@ -32,7 +32,7 @@ const SignIn = () => {
             emptyFormField()
         } catch (error) {
             console.log(error);
-            if (error.code == "auth/invalid-credential"); {
+            if (error.code == "auth/invalid-credential") {
                 alert("enter valid credentials");
                 emptyFormField()  
             }
@@ -60,7 +60,7 @@ const SignIn = () => {
                 <div className="buttons-container">
                     <Button type="submit" > Sign In  </Button>
 
-                    <Button type="button" buttonType='google' onClick={signInWithGoogle} > Sign In  with google </Button>
+                    <Button type="button" buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle} > Sign In  with google </Button>
 
                </div>
 

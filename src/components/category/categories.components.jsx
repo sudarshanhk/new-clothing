@@ -1,4 +1,4 @@
- import "./categories.style.scss"
+ import {BackgroundImage ,CategoryBodyContainer , CategoryItemContainer} from "./categories.style.jsx"
 
   
 const  Categories = ( {category} ) => {
@@ -7,15 +7,15 @@ const  Categories = ( {category} ) => {
  
     return (
         
-        <div className='category-container' key={id} >
-            <div className='background-image' style={{
-                backgroundImage: `url(${imageUrl})`
-            }} />
-            <div className='category-body-container' >
+        <CategoryItemContainer key={id} >
+            <BackgroundImage
+                imageUrl={imageUrl} 
+             />
+            <CategoryBodyContainer >
                 <h2>{title}</h2>
                 <p> Shop Now</p>
-            </div>
-        </div>
+            </CategoryBodyContainer>
+        </CategoryItemContainer>
       
    ) 
 }
